@@ -8,7 +8,10 @@ def normalize(input_matrix):
     """
 
     row_sums = input_matrix.sum(axis=1)
-    assert (np.count_nonzero(row_sums)==np.shape(row_sums)[0]) # no row should sum to zero
+    try:
+        assert (np.count_nonzero(row_sums)==np.shape(row_sums)[0]) # no row should sum to zero
+    except Exception:
+        raise Exception("Error while normalizing. Row(s) sum to zero")
     new_matrix = input_matrix / row_sums[:, np.newaxis]
     return new_matrix
 
@@ -80,7 +83,7 @@ class Corpus(object):
         Randomly initialize the matrices: document_topic_prob and topic_word_prob
         which hold the probability distributions for P(z | d) and P(w | z): self.document_topic_prob, and self.topic_word_prob
 
-        Don't forget to normalize!
+        Don't forget to normalize! 
         HINT: you will find numpy's random matrix useful [https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.random.random.html]
         """
         # ############################
