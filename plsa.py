@@ -81,7 +81,7 @@ class Corpus(object):
         which hold the probability distributions for P(z | d) and P(w | z): self.document_topic_prob, and self.topic_word_prob
 
         Don't forget to normalize!
-        HINT: you will find numpy’s random matrix useful [https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.random.random.html]
+        HINT: you will find numpy's random matrix useful [https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.random.random.html]
         """
         # ############################
         # your code here
