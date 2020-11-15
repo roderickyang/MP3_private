@@ -154,8 +154,6 @@ class Corpus(object):
         self.topic_word_prob = np.nan_to_num(self.topic_word_prob)
 
         print(self.topic_word_prob)
-        if (self.topic_word_prob != NULL):
-            continue
         
         for doc in range(self.topic_prob.shape[0]):
             for topic in range(self.topic_prob.shape[1]):
@@ -207,17 +205,17 @@ class Corpus(object):
             self.expectation_step()
             diff = abs(self.topic_prob - self.topic_prob.copy())
             L1 = diff.sum()
+            
             print ("L1: ", L1)
             print (self.topic_prob.copy())
-            # assert L1 > 0
-
+            
             self.maximization_step(number_of_topics)
             self.calculate_likelihood(number_of_topics)
             temp_likelihood = self.calculate_likelihood(number_of_topics)
             if iteration > 100:
                 if abs(current_likelihood - temp_likelihood) < epsilon/10:
                     print('Stopping', temp_likelihood)
-                    return tmp_likelihood
+                    return temp_likelihood
             current_likelihood = temp_likelihood
             print(max(self.likelihoods))
 
